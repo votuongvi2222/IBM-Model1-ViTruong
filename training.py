@@ -1,6 +1,5 @@
 import csv
 import io
-from collections import defaultdict
 #!/usr/bin/python
 # -*- coding: utf8 -*-
 
