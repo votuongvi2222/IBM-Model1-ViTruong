@@ -33,3 +33,18 @@ def load_data(filename):
         lines_split = dataset[i].lower().split()
         dataset[i] = lines_split
     return dataset
+
+# Function to read input file
+def load_file(filename):
+    with io.open(filename,'r',encoding='utf8') as f:
+        content = f.read().splitlines()
+    dataset = list(content)
+    # for i in range(0,len(dataset)):
+    #     lines_split = dataset[i].lower().split()
+    #     dataset[i] = lines_split
+    return dataset
+
+def write_data(filename, dataset):
+    with io.open(filename, 'w',encoding='utf8') as f:  
+        for keys, value in dataset.items():  
+            f.write('%s\t%s\t%s\n' % (keys[0], keys[1], value))
