@@ -166,4 +166,14 @@ def main():
     update_trans_prob(t_eng_vie, eng_dataset, vie_dataset, 10000)
     
     print(translate(t_eng_vie, 'Tôi và Vi'))
+    with io.open("output.txt,'w',encoding='utf8') as f:
+                 for key,value in t_eng_vie.items():
+                    f.write('%s\t%s\t%s\n' % (key[0],key[1],value))
+    #token = io.open('output.txt','r',encoding = 'utf8')
+    #linetoken = token.readlines()
+    #resulttoken = []
+    #for x in linetoken:
+    #   resulttoken.append(x.split(" ")[0])
+    #token.close()
+    
 main()
