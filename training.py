@@ -94,3 +94,12 @@ def __name__ == '__main__':
 
     t_eng_vie = init_uniform_prob(eng_dataset, vie_dataset)
     update_trans_prob(t_eng_vie, eng_dataset, vie_dataset, 10000)
+<<<<<<< HEAD
+=======
+    
+    print(translate(t_eng_vie, 'Tôi và Vi'))
+    with io.open("output.txt", 'w',encoding='utf8') as f:  
+        for key, value in t_eng_vie.items():  
+            f.write('%s\t%s\t%s\n' % (key[0],key[1], value))
+main()
+>>>>>>> 8e57552d0f0f62653d8f84e48e3b522b328938ec
