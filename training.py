@@ -1,39 +1,4 @@
-import csv
-import io
-from collections import defaultdict
-#!/usr/bin/python
-# -*- coding: utf8 -*-
-
-def loadCsv(filename):
-    lines = csv.reader(open(filename, "r", encoding='utf-8'))
-    '''
-        -   Tách file input thành mảng các dòng, 
-            mỗi dòng được lưu theo dạng cặp câu chứa trong mảng nhỏ --> dataset
-        -   Sau đó duyệt từng mảng nhỏ:
-            +   Mỗi cặp câu trong mảng được cắt chuỗi lưu vào hai mảng khác nhau
-            +   eng_dataset --> câu tiếng anh
-            +   vie_dataset --> câu tiếng việt 
-        Return: hai mảng lần lượt chứa các câu tiếng anh và tiếng việt đã đượcc cắt chuỗi
-    '''
-    dataset = list(lines)
-    eng_dataset = list()
-    vie_dataset = list()
-    for i in range(1, len(dataset)):
-        # print(1)
-        eng_dataset.append(dataset[i][0].lower().split(' '))
-        vie_dataset.append(dataset[i][1].lower().split(' '))
-    return eng_dataset, vie_dataset
-
-
-# Function to read input file
-def load_data(filename):
-    with io.open(filename,'r',encoding='utf8') as f:
-        content = f.read().splitlines()
-    dataset = list(content)
-    for i in range(0,len(dataset)):
-        lines_split = dataset[i].lower().split()
-        dataset[i] = lines_split
-    return dataset
+from file_actions import *
 
 def init_uniform_prob(eng_sentences, vie_sentences , init_p = 0.25):
     '''
@@ -123,47 +88,9 @@ def update_trans_prob(t_prob, eng_dataset, vie_dataset, n_recurr):
             else:
                 t_prob[word_pair] = prob
 
-def find_max_eng_vie_prob(t_prob, vie_word):
-    '''
-        -   Hàm tìm từ tiếng anh có xác suất cao nhất khi được dịch từ một từ tiếng việt
-        -   Trả về cặp từ có xác suất cao nhất và giá trị xác suất của cặp từ đó
-        -   Trong trường hợp không tìm thấy từ tiếng việt (chưa được training), thêm cặp
-            từ tiếng việt đó vào trained_data và trả về cặp từ đó với xác suất bằng 1
-    '''
-    max_prob = -1
-    max_prob_word_pair = tuple()
-    for word_pair in t_prob.keys():
-        if vie_word in word_pair:
-            if t_prob[word_pair] > max_prob:
-                max_prob = t_prob[word_pair]
-                max_prob_word_pair = word_pair
-    if max_prob == -1:
-        t_prob[(vie_word, vie_word)] = 1
-        max_prob_word_pair = (vie_word, vie_word)
-        max_prob = 1.0
-    return max_prob_word_pair, max_prob
-
-def translate(t_prob, vie_sen):
-    '''
-        -   Hàm tìm câu tiếng anh có khả năng được dịch từ câu tiếng việt
-            xác suất cao nhất mà không quan tâm thứ tự.
-    '''
-    vie_words = vie_sen.lower().split(' ')
-    prob_eng_vie = dict()
-    for vie_word in vie_words:
-        prob_word_pair = find_max_eng_vie_prob(t_prob, vie_word)
-        max_prob_word_pair = prob_word_pair[0]
-        max_prob = prob_word_pair[1]
-        print(max_prob_word_pair)
-        prob_eng_vie[max_prob_word_pair] = max_prob
-    return prob_eng_vie
-
-def main():
+def __name__ == '__main__':
     eng_dataset = load_data('train.en')
     vie_dataset = load_data('train.vi')
 
     t_eng_vie = init_uniform_prob(eng_dataset, vie_dataset)
     update_trans_prob(t_eng_vie, eng_dataset, vie_dataset, 10000)
-    
-    print(translate(t_eng_vie, 'Tôi và Vi'))
-main()
