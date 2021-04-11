@@ -1,3 +1,3 @@
-# IBM-Model1-ViTruong
+# IBM-Model1-ViTruong :strawberry:
 
-WELCOME TO WINX
+:sunflower: <h2> **WELCOME TO WINX** :sunflower:
