@@ -1,12 +1,12 @@
 i am you 	I am you	0.875
-i there a quyển sách 	I have a book	0.07692307692307693
+i there a book book 	I have a book	0.15384615384615385
 you am student student giỏi 	you are a good student	0.5909090909090909
 who am student student my you 	who is your students	0.35
 you there thích i not 	do you like me	0.07142857142857142
-i thực sự rất hate you 	i really hate you	0.17647058823529413
+i book book rất hate you 	i really hate you	0.11764705882352941
 i hate you 	i hate you	1.0
 you ổn chứ 	are you ok	0.1
 a singer singer 	A singer	0.875
 a student student 	A student	0.8888888888888888
-a homework sing rất hay 	A very good song	0.0625
-answer answer this thực sự good 	this answer is so good	0.0
+a homework sing rất book 	A very good song	0.0625
+answer answer this book book good 	this answer is so good	0.045454545454545456

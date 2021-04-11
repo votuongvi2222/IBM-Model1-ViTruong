@@ -94,4 +94,4 @@ if __name__ == '__main__':
 
     t_eng_vie = init_uniform_prob(eng_trained_dataset, vie_trained_dataset)
     update_trans_prob(t_eng_vie, eng_trained_dataset, vie_trained_dataset, 10000)
-    write_data('output.txt', t_eng_vie)
+    write_data('t_eng_vi.txt', t_eng_vie)

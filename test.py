@@ -1,4 +1,4 @@
-from training import *
+from train import *
 from translation import *
 from file_actions import *
 
@@ -18,7 +18,7 @@ def compare_result_test_sentences(result_sentence, test_sentence):
 if __name__ == '__main__':
     eng_tested_lines = load_file('test.en')
     vie_tested_lines = load_file('test.vi')
-    trained_prob_dataset = load_data('output.txt')
+    trained_prob_dataset = load_data('t_eng_vi.txt')
     
     prob_translated_dataset = dict()
     prob_right_translated_dataset = dict()
