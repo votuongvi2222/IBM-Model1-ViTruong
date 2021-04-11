@@ -28,9 +28,7 @@ if __name__ == '__main__':
         translated_sentence_dataset = translate_eng_vie_sentence(trained_prob_dataset, vie_sen)
         result_sentence = ''
         for word_pair in translated_sentence_dataset.keys():
-            print(word_pair)
             result_sentence += word_pair[0] + ' '
-            print(result_sentence)
         prob1 = compute_prob_eng_vie_sentence(translated_sentence_dataset, len(vie_sen))
         prob2 = compare_result_test_sentences(result_sentence, eng_sen)
 
