@@ -1,12 +1,12 @@
-i am you 	Tôi là bạn	2.7998538182414175e-11
-i there a book book 	Tôi có một quyển sách	2.5080831119685667e-30
-you am student student giỏi 	bạn là học sinh giỏi	2.5884151075058488e-27
-who am student student my you 	ai là học sinh của bạn	6.748661749456002e-31
-you there thích i not 	bạn có thích tôi không	7.264205043798919e-31
-i book book rất hate you 	tôi thực sự rất ghét bạn	1.5631537931681517e-35
-i hate you 	tôi ghét bạn	4.138273651346483e-14
-you ổn chứ 	bạn ổn chứ	3.762512031925773e-11
-a singer singer 	Một ca sĩ	6.696925490435577e-10
-a student student 	một học sinh	4.256350503160574e-14
-a homework sing rất book 	Một bài hát rất hay	6.4296871591917415e-27
-answer answer this book book good 	đáp án này thực sự tốt	1.3161542126898024e-32
+i am you 	Tôi là bạn	2.1164200592539493e-11
+i there a book 	Tôi có một quyển sách	1.2506733797742029e-29
+you am student good 	bạn là học sinh giỏi	1.7595098393349685e-27
+who am student my you 	ai là học sinh của bạn	4.462458430041383e-31
+you there thích i not 	bạn có thích tôi không	5.617145799661662e-31
+i book hate you 	tôi thực sự ghét bạn	6.714872980824766e-28
+i hate you 	tôi ghét bạn	3.0070090602648175e-14
+you ổn chứ 	bạn ổn chứ	2.7011566195046893e-11
+a singer 	Một ca sĩ	1e-09
+a student 	một học sinh	4.292198241799155e-14
+a bài hát rất book 	Một bài hát rất hay	5.086263020808654e-26
+answer this book good 	đáp án này thực sự tốt	1.752176778109647e-31
