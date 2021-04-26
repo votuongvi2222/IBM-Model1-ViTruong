@@ -1,4 +1,16 @@
+import math
 from file_actions import *
+from collections import defaultdict
+def is_converged(new,old,num_of_iterations, max_num_of_iterations):
+    epsilone = 0.00000001
+    if num_of_iterations > max_num_of_iterations :
+        return True
+
+    for i in range(len(new)):
+        for j in range(len(new[0])):
+            if math.fabs(new[i][j]- old[i][j]) > epsilone:
+                return False
+    return True
 
 def init_uniform_prob(eng_sentences, vie_sentences , init_p = 0.25):
     '''
@@ -18,7 +30,7 @@ def init_uniform_prob(eng_sentences, vie_sentences , init_p = 0.25):
                 (xét theo mỗi cặp câu)
         '''
         eng_sen = eng_sentences[k]
-        vie_sen = vie_sentences[k]
+        vie_sen = [None] + vie_sentences[k]
 
         eng_sen_len = len(eng_sen)
         vie_sen_len = len(vie_sen)
@@ -43,13 +55,14 @@ def init_counter(eng_dataset, vie_dataset):
     counter['vie'] = dict()
     num_lines = len(eng_dataset)
     for k in range(0, num_lines):
+        vie_dataset[k] = [None] + vie_dataset[k]
         for vie_word in vie_dataset[k]:
             for eng_word in eng_dataset[k]:
                 counter['eng_vie'][(eng_word, vie_word)] = 0
             counter['vie'][vie_word] = 0
     return counter
     
-def update_trans_prob(t_prob, eng_dataset, vie_dataset, n_recurr):
+def update_trans_prob(t_prob, eng_dataset, vie_dataset, n_recurr=0, max_num_of_iterations=10):
     '''
         -   Triển khai theo mã giả của thuật toán EM của model 1 
         -   Hàm này nhằm update lại giá trị xác suất của mỗi cặp từ,
@@ -59,7 +72,10 @@ def update_trans_prob(t_prob, eng_dataset, vie_dataset, n_recurr):
             suất vượt quá 1, gán p = 1.
         -   Vòng lặp chạy theo giá trị số lần ta muốn training.
     '''
-    for time in range(n_recurr):
+    t_prob_term = dict()
+    while not is_converged(t_prob, t_prob_term, n_recurr, max_num_of_iterations):
+        n_recurr += 1
+        t_prob_term = t_prob.copy()
         # initialize
         counter = init_counter(eng_dataset, vie_dataset)
         count_eng_vie = counter['eng_vie']
@@ -68,6 +84,7 @@ def update_trans_prob(t_prob, eng_dataset, vie_dataset, n_recurr):
         for k in range(len(eng_dataset)):
             s_total_eng = dict()
             # compute normalization
+            vie_dataset[k] = [None] + vie_dataset[k]
             for eng_word in eng_dataset[k]:
                 s_total_eng[eng_word] = 0
                 for vie_word in vie_dataset[k]:
@@ -91,7 +108,7 @@ def update_trans_prob(t_prob, eng_dataset, vie_dataset, n_recurr):
 if __name__ == '__main__':
     eng_trained_dataset = load_data('train.en')
     vie_trained_dataset = load_data('train.vi')
-
+    # print(eng_trained_dataset)
     t_eng_vie = init_uniform_prob(eng_trained_dataset, vie_trained_dataset)
-    update_trans_prob(t_eng_vie, eng_trained_dataset, vie_trained_dataset, 10000)
+    update_trans_prob(t_eng_vie, eng_trained_dataset, vie_trained_dataset, 0, 20)
     write_data('t_eng_vi.txt', t_eng_vie)
