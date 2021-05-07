@@ -13,7 +13,7 @@ if __name__ == '__main__':
     time_taken_per_level = dict()
     for level in levels:
         start_time = time.time()
-        t_prob = train_model.train('datasets/train.en', 'datasets/train.vi', level)
+        t_prob = train_model.train('../datasets/train.en', '../datasets/train.vi', level)
         end_time = time.time()
         time_taken_per_level[level] = end_time - start_time
     # Plot the time excuting
