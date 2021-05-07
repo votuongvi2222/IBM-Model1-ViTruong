@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
     '''
-        :levels --> The levels of data's size will be trained --> list()
-        :time_taken_per_level --> Store the times taken for each level --> dict()
+    :levels --> The levels of data's size will be trained --> list()
+    :time_taken_per_level --> Store the times taken for each level --> dict()
     '''
     levels = [1000, 10000, 100000]
     time_taken_per_level = dict()

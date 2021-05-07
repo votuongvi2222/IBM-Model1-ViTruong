@@ -157,3 +157,4 @@ def train(eng_file_name, vie_file_name, data_length=None):
     t_eng_vie = init_uniform_prob(eng_trained_dataset, vie_trained_dataset)
     update_trans_prob(t_eng_vie, eng_trained_dataset, vie_trained_dataset)
     write_data('t_eng_vi.txt', t_eng_vie)
+    return t_eng_vie
