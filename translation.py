@@ -7,11 +7,11 @@ def find_max_eng_vie_prob(t_prob, vie_word):
     '''
     max_prob = -1
     max_prob_word_pair = tuple()
-    for line in t_prob:
-        if vie_word in line:
-            if float(line[2]) > max_prob:
-                max_prob = float(line[2])
-                max_prob_word_pair = (line[0], line[1])
+    for word_pair in t_prob:
+        if vie_word in word_pair:
+            if float(t_prob[word_pair]) > max_prob:
+                max_prob = float(t_prob[word_pair])
+                max_prob_word_pair = word_pair
     if max_prob == -1:
         # t_prob[(vie_word, vie_word)] = 1
         max_prob_word_pair = (vie_word, vie_word)
